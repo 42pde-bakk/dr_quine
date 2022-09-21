@@ -3,9 +3,9 @@ NAME = Colleen
 SRCS = $(NAME).s
 OBJS = $(NAME).o
 
-CCFLAGS = -f elf64
+CCFLAGS = -f elf64 -g
 AS = nasm
-LDFLAGS = -lc
+LDFLAGS = -lc -m64 -no-pie
 include ../../mk_settings/colours.mk
 include ../../mk_settings/flags.mk
 
