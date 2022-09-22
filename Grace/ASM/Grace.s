@@ -1,27 +1,33 @@
-; Comment outside function
+; Comment
 global main
-global start
-extern printf
+extern fprintf, fopen, exit
+%define STRING "; Comment%2$cglobal main%2$cextern fprintf, fopen, exit%2$c%%define STRING %3$c%4$s%3$c%2$c%%define FILENAME %3$cGrace_kid.s%3$c%2$c%2$csection .text%2$c%2$c%%macro grace 0%2$cmain:%2$c%1$cpush rbp%2$c%1$cmov rbp, rsp%2$c%1$cmov rdi, filename%2$c%1$cmov rsi, open_mode%2$c%1$ccall fopen%2$c%1$cmov rdi, rax%2$c%1$cmov rsi, fmt%2$c%1$cmov rdx, 9%2$c%1$cmov rcx, 10%2$c%1$cmov r8, 34%2$c%1$cmov r9, fmt%2$c%1$cxor rax, rax%2$c%1$ccall fprintf%2$c%1$cleave%2$c%1$cxor rdi, rdi%2$c%1$ccall exit%2$c%%endmacro%2$c%2$cgrace%2$c%2$cfmt: db STRING, 0%2$cfilename: db FILENAME, 0%2$copen_mode: db %3$cw%3$c, 0%2$c"
+%define FILENAME "Grace_kid.s"
 
 section .text
 
-start:
-	; Comment inside function
-	call main
-	ret
-
+%macro grace 0
 main:
 	push rbp
 	mov rbp, rsp
-	mov rdi, fmt
-	mov rsi, 9
-	mov rdx, 10
-	mov rcx, 34
-	mov r8, fmt
+	mov rdi, filename
+	mov rsi, open_mode
+	call fopen
+	mov rdi, rax
+	mov rsi, fmt
+	mov rdx, 9
+	mov rcx, 10
+	mov r8, 34
+	mov r9, fmt
 	xor rax, rax
-	call printf
+	call fprintf
 	leave
-	xor rax, rax
-	ret
+	xor rdi, rdi
+	call exit
+%endmacro
 
-fmt: db "; Comment outside function%2$cglobal main%2$cglobal start%2$cextern printf%2$c%2$csection .text%2$c%2$cstart:%2$c%1$c; Comment inside function%2$c%1$ccall main%2$c%1$cret%2$c%2$cmain:%2$c%1$cpush rbp%2$c%1$cmov rbp, rsp%2$c%1$cmov rdi, fmt%2$c%1$cmov rsi, 9%2$c%1$cmov rdx, 10%2$c%1$cmov rcx, 34%2$c%1$cmov r8, fmt%2$c%1$cxor rax, rax%2$c%1$ccall printf%2$c%1$cleave%2$c%1$cxor rax, rax%2$c%1$cret%2$c%2$cfmt: db %3$c%4$s%3$c%2$c"
+grace
+
+fmt: db STRING, 0
+filename: db FILENAME, 0
+open_mode: db "w", 0

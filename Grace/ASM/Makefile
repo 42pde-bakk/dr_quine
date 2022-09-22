@@ -23,7 +23,7 @@ clean:
 	@/bin/rm -f *.o *~ *.gch
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	/bin/rm -f $(NAME) Grace_kid.s
 
 re:
 	$(MAKE) fclean
