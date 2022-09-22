@@ -18,7 +18,7 @@ $(NAME): $(OBJS)
 	$(CC) -c $(CFLAGS) $(INCLUDE) $< -o $@
 
 clean:
-	/bin/rm -f $(OBJS)
+	/bin/rm -f $(OBJS) Sully_*
 	@/bin/rm -f *.o *~ *.gch
 
 fclean: clean
