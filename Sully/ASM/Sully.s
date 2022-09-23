@@ -8,6 +8,8 @@ main:
 	mov rbp, rsp
 	mov rdi, 5
 	dec rdi
+	cmp rdi, 0
+	je byebye
 
 	mov [rel file_nb], rdi
 
