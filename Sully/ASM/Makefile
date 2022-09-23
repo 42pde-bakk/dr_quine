@@ -5,7 +5,7 @@ OBJS = $(NAME).o
 
 CCFLAGS = -f elf64 -g
 AS = nasm
-LDFLAGS = -lc -m64 -no-pie
+LDFLAGS = -lc -m64 -no-pie -g #-fsanitize=address
 include ../../mk_settings/colours.mk
 include ../../mk_settings/flags.mk
 
