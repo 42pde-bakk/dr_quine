@@ -3,9 +3,9 @@ NAME = Sully
 SRCS = $(NAME).s
 OBJS = $(NAME).o
 
-CCFLAGS = -f elf64 -g
+ASFLAGS = -f elf64 #-g
 AS = nasm
-LDFLAGS = -lc -m64 -no-pie -g #-fsanitize=address
+LDFLAGS = -lc -m64 -no-pie #-g -fsanitize=address
 include ../../mk_settings/colours.mk
 include ../../mk_settings/flags.mk
 
@@ -16,7 +16,7 @@ $(NAME): $(OBJS)
 	@printf "$(PINK)Done building $(NAME) $(RESET)\n"
 
 %.o: %.s
-	$(AS) $(CCFLAGS) $< -o $@
+	$(AS) $(ASFLAGS) $< -o $@
 
 clean:
 	/bin/rm -f $(OBJS)
@@ -25,11 +25,4 @@ clean:
 fclean: clean
 	/bin/rm -f $(NAME) Sully_*
 
-re:
-	$(MAKE) fclean
-	$(MAKE) all
-
-debug: DEBUG=1
-debug:
-	$(MAKE) fclean
-	$(MAKE) all
+re: fclean all
