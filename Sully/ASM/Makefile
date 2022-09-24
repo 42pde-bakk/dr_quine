@@ -3,9 +3,9 @@ NAME = Sully
 SRCS = $(NAME).s
 OBJS = $(NAME).o
 
-ASFLAGS = -f elf64 #-g
+ASFLAGS = -f elf64
 AS = nasm
-LDFLAGS = -lc -m64 -no-pie #-g -fsanitize=address
+LDFLAGS = -lc -m64 -no-pie
 include ../../mk_settings/colours.mk
 include ../../mk_settings/flags.mk
 
