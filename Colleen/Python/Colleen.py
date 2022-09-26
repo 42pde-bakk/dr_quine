@@ -1,12 +1,9 @@
 # Comment
-def printer():
-	exec(c := "# Comment print(f'exec(c := {chr(34) + c + chr(34)})')")
-
+def p():
+	s = '# Comment\ndef p():\n\ts = %r\n\tprint(s %% s)\n\ndef main():\n\tp()\n\nmain()'
+	print(s % s)
 
 def main():
-	# Comment
-	printer()
+	p()
 
-
-if __name__ == '__main__':
-	main()
+main()
