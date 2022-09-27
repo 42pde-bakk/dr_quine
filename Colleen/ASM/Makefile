@@ -3,7 +3,7 @@ NAME = Colleen
 SRCS = $(NAME).s
 OBJS = $(NAME).o
 
-CCFLAGS = -f elf64 -g
+CCFLAGS = -f elf64
 AS = nasm
 LDFLAGS = -lc -m64 -no-pie
 include ../../mk_settings/colours.mk
