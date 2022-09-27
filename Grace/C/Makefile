@@ -1,10 +1,8 @@
 NAME = Grace
 
 OBJ_DIR = ./obj
-SRC_EXT = c
-OBJ_EXT = o
-SRCS = Grace.c
-OBJS = Grace.o
+SRCS = $(NAME).c
+OBJS = $(NAME).o
 
 include ../../mk_settings/colours.mk
 include ../../mk_settings/flags.mk
@@ -24,16 +22,6 @@ clean:
 	@/bin/rm -f *.o *~ *.gch
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	/bin/rm -f $(NAME) Grace_kid.c
 
-re:
-	$(MAKE) fclean
-	$(MAKE) all
-
-debug: DEBUG=1
-debug:
-	$(MAKE) fclean
-	$(MAKE) all
-
-test: $(NAME)
-	./$(NAME) | diff $(NAME).c -
+re: fclean all
