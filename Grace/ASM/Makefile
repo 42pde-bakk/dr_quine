@@ -3,7 +3,7 @@ NAME = Grace
 SRCS = $(NAME).s
 OBJS = $(NAME).o
 
-CCFLAGS = -f elf64 -g
+CCFLAGS = -f elf64
 AS = nasm
 LDFLAGS = -lc -m64 -no-pie
 include ../../mk_settings/colours.mk
@@ -25,14 +25,5 @@ clean:
 fclean: clean
 	/bin/rm -f $(NAME) Grace_kid.s
 
-re:
-	$(MAKE) fclean
-	$(MAKE) all
+re: fclean all
 
-debug: DEBUG=1
-debug:
-	$(MAKE) fclean
-	$(MAKE) all
-
-test: $(NAME)
-	./$(NAME) | diff $(NAME).c -
