@@ -1,6 +1,5 @@
 NAME = Sully
 
-OBJ_DIR = ./obj
 SRCS = $(NAME).c
 OBJS = $(NAME).o
 
@@ -24,11 +23,4 @@ clean:
 fclean: clean
 	/bin/rm -f $(NAME)
 
-re:
-	$(MAKE) fclean
-	$(MAKE) all
-
-debug: DEBUG=1
-debug:
-	$(MAKE) fclean
-	$(MAKE) all
+re: fclean all

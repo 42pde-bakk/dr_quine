@@ -1,10 +1,7 @@
 NAME = Colleen
 
-OBJ_DIR = ./obj
-SRC_EXT = c
-OBJ_EXT = o
-SRCS = Colleen.c
-OBJS = Colleen.o
+SRCS = $(NAME).c
+OBJS = $(NAME).o
 
 include ../../mk_settings/colours.mk
 include ../../mk_settings/flags.mk
@@ -26,14 +23,4 @@ clean:
 fclean: clean
 	/bin/rm -f $(NAME)
 
-re:
-	$(MAKE) fclean
-	$(MAKE) all
-
-debug: DEBUG=1
-debug:
-	$(MAKE) fclean
-	$(MAKE) all
-
-test: $(NAME)
-	./$(NAME) | diff $(NAME).c -
+re: fclean all

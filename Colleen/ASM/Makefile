@@ -25,14 +25,4 @@ clean:
 fclean: clean
 	/bin/rm -f $(NAME)
 
-re:
-	$(MAKE) fclean
-	$(MAKE) all
-
-debug: DEBUG=1
-debug:
-	$(MAKE) fclean
-	$(MAKE) all
-
-test: $(NAME)
-	./$(NAME) | diff $(NAME).c -
+re: fclean all

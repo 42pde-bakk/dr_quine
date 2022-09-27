@@ -1,6 +1,5 @@
 NAME = Grace
 
-OBJ_DIR = ./obj
 SRCS = $(NAME).c
 OBJS = $(NAME).o
 
