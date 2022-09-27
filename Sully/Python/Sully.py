@@ -6,4 +6,4 @@ if i > 0:
 	filename = f"Sully_{i}.py"
 	with open(filename, "w") as f:
 		print(s % (i, s), file=f)
-	os.system(f'python {filename}')
+	os.system(f"python {filename}")
